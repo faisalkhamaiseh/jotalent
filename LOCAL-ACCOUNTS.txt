@@ -1,0 +1,21 @@
+JoTalent - local sign-in details
+================================
+These accounts exist only in the database on this computer.
+This file is ignored by git. Do not reuse these passwords anywhere else.
+
+Sign in at:  http://localhost:3000/en/sign-in   (Arabic: /ar/sign-in)
+
+ADMIN
+  Email:     admin@jotalent.test
+  Password:  ahmad
+
+DEMO ACCOUNTS (all share one password)
+  Password:    faisal
+  Client:      emma@jotalent.test
+  Client:      daniel@jotalent.test
+  Freelancer:  lina.haddad@jotalent.test
+  Expert:      expert@jotalent.test
+
+To change a password: edit SEED_ADMIN_PASSWORD or SEED_DEMO_PASSWORD in .env,
+then run:  npm run db:passwords
+(Editing .env alone does not change an account that already exists.)

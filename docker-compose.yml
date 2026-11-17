@@ -1,0 +1,24 @@
+# Optional: a full PostgreSQL server for local development, as an alternative
+# to `npm run db:dev`. Start with `docker compose up -d --wait`, then set
+# DATABASE_URL=postgresql://jotalent:jotalent@localhost:5432/jotalent
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: jotalent
+      POSTGRES_PASSWORD: jotalent
+      POSTGRES_DB: jotalent
+    ports:
+      # Bound to loopback only; these credentials are for local use.
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jotalent -d jotalent"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres-data:
